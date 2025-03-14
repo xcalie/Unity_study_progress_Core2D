@@ -1,11 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using Spine;
 using Spine.Unity;
 using UnityEngine;
 
 public class C0007_2 : MonoBehaviour
 {
     private SkeletonAnimation skeletonAnimation;
+
+    [SpineAnimation] // 动画
+    public string animationName;
+
+    [SpineBone] // 骨骼
+    public string boneName;
+
+    [SpineSlot] // 插槽
+    public string slotName;
+
+    [SpineAttachment] // 附件
+    public string attachmentName;
 
     void Start()
     {
@@ -59,6 +72,19 @@ public class C0007_2 : MonoBehaviour
             Debug.Log("自定义事件");
         };
 
+        #endregion
+
+        #region 获取数据
+
+        // 获取骨骼
+        Bone bone = skeletonAnimation.skeleton.FindBone(boneName);
+
+        // 设置骨骼
+        skeletonAnimation.skeleton.SetBonesToSetupPose();
+
+        #endregion
+
+        #region 在UI上显示
         #endregion
     }
 
